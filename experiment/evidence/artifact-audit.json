@@ -1,0 +1,414 @@
+{
+  "checkedAt": "2026-10-21T15:45:10.330Z",
+  "scope": "Real desktop-generated files; Node replaces only filesystem IPC. Graph and cache code are unchanged production modules. This is not a model-answer quality test.",
+  "sources": [
+    {
+      "name": "01-product-scope.md",
+      "hash": "988c0115a8c4af4ba8224e759d036b66dac30c51b2158b39b89f072001a64095",
+      "cachedOutputs": 9,
+      "ingestedAt": 1792596184568
+    },
+    {
+      "name": "02-two-step-ingest.md",
+      "hash": "1a5e74d26e1e9371b91bacfe67c1eadd53db0dbe910c2ad14114bb80e1b61c17",
+      "cachedOutputs": 7,
+      "ingestedAt": 1792596322822
+    },
+    {
+      "name": "03-storage-and-provenance.md",
+      "hash": "0e4dd0b6959ca372cf33f3698a0aec81a5fab1ef168ba4d29700013fd3a64964",
+      "cachedOutputs": 13,
+      "ingestedAt": 1792596403575
+    },
+    {
+      "name": "04-hybrid-retrieval.md",
+      "hash": "70e74687f838208ae4cf1bf7fa20c3f4fc94ec107796721ec0ad8639c20406e7",
+      "cachedOutputs": 10,
+      "ingestedAt": 1792596470131
+    },
+    {
+      "name": "05-graph-and-review.md",
+      "hash": "967dbe17928ed44fbfcad883667e174e5c7be6b26e6fd9545e08586da9fd112f",
+      "cachedOutputs": 8,
+      "ingestedAt": 1792596539005
+    },
+    {
+      "name": "06-queue-and-recovery.md",
+      "hash": "16781c9d25536c264dc411936f204e62d7758fed628aeb2c54f57383bd9e0af3",
+      "cachedOutputs": 9,
+      "ingestedAt": 1792596620732
+    },
+    {
+      "name": "07-retention-policy-v1.md",
+      "hash": "fafcb586c77163eb2b5e2c92f8fd77ce27234a1df97a021218321ff04070e097",
+      "cachedOutputs": 6,
+      "ingestedAt": 1792596677370
+    },
+    {
+      "name": "08-retention-policy-v2.md",
+      "hash": "537c74870504554520f328711a622d18bf2b3754c8adf1060a287d5c4aead879",
+      "cachedOutputs": 9,
+      "ingestedAt": 1792596746126
+    }
+  ],
+  "graph": {
+    "nodes": 41,
+    "edges": 135,
+    "communities": 8,
+    "types": {
+      "concept": 23,
+      "entity": 7,
+      "other": 2,
+      "overview": 1,
+      "source": 8
+    }
+  },
+  "pagesWithoutProvenance": [],
+  "danglingSourceReferences": [],
+  "pages": [
+    {
+      "path": "wiki/sources/08-retention-policy-v2.md",
+      "type": "source",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/07-retention-policy-v1.md",
+      "type": "source",
+      "sources": [
+        "07-retention-policy-v1.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/06-queue-and-recovery.md",
+      "type": "source",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/05-graph-and-review.md",
+      "type": "source",
+      "sources": [
+        "05-graph-and-review.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/04-hybrid-retrieval.md",
+      "type": "source",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/03-storage-and-provenance.md",
+      "type": "source",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/02-two-step-ingest.md",
+      "type": "source",
+      "sources": [
+        "02-two-step-ingest.md"
+      ]
+    },
+    {
+      "path": "wiki/sources/01-product-scope.md",
+      "type": "source",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/索引重建的成本如何量化.md",
+      "type": "query",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/生成任务失败或取消时界面应如何解释进度.md",
+      "type": "query",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/混合检索的通道数变化如何影响RRF融合.md",
+      "type": "query",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/图扩展的噪声如何控制.md",
+      "type": "query",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/取消的竞态防护如何实现.md",
+      "type": "query",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/原始来源过期后wiki引用如何保持可追溯.md",
+      "type": "query",
+      "sources": [
+        "07-retention-policy-v1.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/人工维护与来源追溯如何协调.md",
+      "type": "query",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/为什么知识需要持久化.md",
+      "type": "query",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/queries/两阶段拆分的收益与代价如何权衡.md",
+      "type": "query",
+      "sources": [
+        "02-two-step-ingest.md"
+      ]
+    },
+    {
+      "path": "wiki/overview.md",
+      "type": "overview",
+      "sources": []
+    },
+    {
+      "path": "wiki/log.md",
+      "type": "other",
+      "sources": []
+    },
+    {
+      "path": "wiki/index.md",
+      "type": "other",
+      "sources": []
+    },
+    {
+      "path": "wiki/entities/进度UI.md",
+      "type": "entity",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/查询索引.md",
+      "type": "entity",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/持久化队列.md",
+      "type": "entity",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/人工复核队列.md",
+      "type": "entity",
+      "sources": [
+        "05-graph-and-review.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/wiki.md",
+      "type": "entity",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/raw-sources.md",
+      "type": "entity",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/entities/atlas-技术知识助手.md",
+      "type": "entity",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/错误传播.md",
+      "type": "concept",
+      "sources": [
+        "02-two-step-ingest.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/证据上下文与token预算.md",
+      "type": "concept",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/索引重建成本.md",
+      "type": "concept",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/知识编译与rag结合.md",
+      "type": "concept",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/混合检索.md",
+      "type": "concept",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/检索通道降级.md",
+      "type": "concept",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/来源追溯.md",
+      "type": "concept",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/来源删除的级联处理.md",
+      "type": "concept",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/来源冲突处理.md",
+      "type": "concept",
+      "sources": [
+        "05-graph-and-review.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/时间敏感查询解析.md",
+      "type": "concept",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/数据保留策略版本化.md",
+      "type": "concept",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/数据保留策略.md",
+      "type": "concept",
+      "sources": [
+        "07-retention-policy-v1.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/政策生效日期边界.md",
+      "type": "concept",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/控制信息与数据分层.md",
+      "type": "concept",
+      "sources": [
+        "03-storage-and-provenance.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/实验与生产边界.md",
+      "type": "concept",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/历史版本策略.md",
+      "type": "concept",
+      "sources": [
+        "05-graph-and-review.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/任务状态机.md",
+      "type": "concept",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/任务恢复策略.md",
+      "type": "concept",
+      "sources": [
+        "06-queue-and-recovery.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/两阶段知识编译.md",
+      "type": "concept",
+      "sources": [
+        "02-two-step-ingest.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/不可追溯删除.md",
+      "type": "concept",
+      "sources": [
+        "08-retention-policy-v2.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/三层数据模型.md",
+      "type": "concept",
+      "sources": [
+        "01-product-scope.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/wiki图结构.md",
+      "type": "concept",
+      "sources": [
+        "05-graph-and-review.md"
+      ]
+    },
+    {
+      "path": "wiki/concepts/RRF排名融合.md",
+      "type": "concept",
+      "sources": [
+        "04-hybrid-retrieval.md"
+      ]
+    }
+  ]
+}

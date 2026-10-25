@@ -1,5 +1,7 @@
 # LLM Wiki
 
+> **面试级实验分支：** 基于 [nashsu/llm_wiki](https://github.com/nashsu/llm_wiki) v0.6.13，研究知识编译与检索架构，并改进导入进度和暂停/恢复反馈。阅读 [实验说明](experiment/README.md)、[真实验收记录](experiment/D1-验收记录.md) 和 [工程改进](experiment/D3-工程改进.md)；上游能力、本地改动和已知限制均单独标明。
+
 <p align="center">
   <img src="logo.jpg" width="128" height="128" style="border-radius: 22%;" alt="LLM Wiki Logo">
 </p>

@@ -780,6 +780,7 @@ export function pauseProcessing(): void {
       console.warn("[Ingest Queue] Failed to persist paused queue:", err)
     })
   }
+  notifyQueueListeners()
   console.log("[Ingest Queue] Paused — in-flight task aborted; no new tasks will start")
 }
 
@@ -792,6 +793,7 @@ export function resumeProcessing(): void {
   clearUsageLimitAutoResume()
   paused = false
   blockedOnLlmConfig = false
+  notifyQueueListeners()
   console.log("[Ingest Queue] Resumed")
   if (currentProjectId) processNext(currentProjectId)
 }

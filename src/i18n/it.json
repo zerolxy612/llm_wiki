@@ -1055,6 +1055,18 @@
     "pdfTooLarge": "Questo PDF è troppo grande per l'anteprima integrata. Aprilo con l'app di sistema."
   },
   "activity": {
+    "queueStates": {
+      "blocked": "In attesa del modello",
+      "paused": "Coda in pausa",
+      "processing": "Importazione in corso",
+      "queued": "In attesa di importazione",
+      "stopped": "Importazione da verificare",
+      "done": "Importazione completata"
+    },
+    "queueOutcomes": "Riuscite {{completed}} / {{total}} · Fallite {{failed}} · Annullate {{cancelled}}",
+    "configureModelHint": "Configura un modello di importazione nelle Impostazioni, poi fai clic su Riprendi.",
+    "resumeHint": "Nessuna nuova attività verrà avviata. Fai clic su Riprendi. I dettagli possono indicare un limite del fornitore.",
+    "viewTaskError": "Mostra errore o motivo dell'arresto",
     "processing": "Elaborazione: {{title}}",
     "done": "Completato: {{title}}",
     "clearCompleted": "Rimuovi i completati",
@@ -1062,7 +1074,7 @@
     "ingestQueuePaused": "Coda di elaborazione (in pausa)",
     "pauseQueue": "Pausa",
     "resumeQueue": "Riprendi",
-    "pauseQueueTitle": "Mette in pausa al termine dell'attività in corso. Non verranno avviate nuove elaborazioni.",
+    "pauseQueueTitle": "Metti in pausa la coda e richiedi l’interruzione delle importazioni in corso. Alla ripresa, le attività incomplete saranno rielaborate.",
     "resumeQueueTitle": "Riprendi l'elaborazione delle attività in coda",
     "queueCompleteCount": "{{done}}/{{total}} completate",
     "failedCount": "{{count}} non riuscite",

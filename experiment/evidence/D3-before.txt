@@ -1,0 +1,39 @@
+
+ RUN  v4.1.4 /Users/longxiangyu/LLM-wiki
+
+stdout | src/lib/ingest-queue.test.ts > ingest-queue — enqueue & basic processing > notifies subscribers when an idle queue is paused and resumed
+[Ingest Queue] Paused — in-flight task aborted; no new tasks will start
+[Ingest Queue] Resumed
+
+ ❯ src/lib/ingest-queue.test.ts (70 tests | 1 failed | 69 skipped) 6ms
+     × notifies subscribers when an idle queue is paused and resumed 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/ingest-queue.test.ts > ingest-queue — enqueue & basic processing > notifies subscribers when an idle queue is paused and resumed
+AssertionError: expected [ false ] to deeply equal [ false, true, false ]
+
+- Expected
++ Received
+
+  [
+    false,
+-   true,
+-   false,
+  ]
+
+ ❯ src/lib/ingest-queue.test.ts:140:28
+    138|       pauseProcessing()
+    139|       resumeProcessing()
+    140|       expect(pausedStates).toEqual([false, true, false])
+       |                            ^
+    141|     } finally {
+    142|       unsubscribe()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 69 skipped (70)
+   Start at  22:18:12
+   Duration  221ms (transform 93ms, setup 14ms, import 100ms, tests 6ms, environment 0ms)

@@ -49,3 +49,11 @@ pnpm-debug.log*
 # Brainstorm assets (not tracked in source control)
 .superpowers/
 .claude/
+
+# Local interview experiment output; source corpus and evidence stay reviewable.
+/experiment/knowledge-base/
+
+# Curated build evidence referenced by the experiment documentation.
+!/experiment/evidence/desktop-build.log
+!/experiment/evidence/desktop-bundle.log
+!/experiment/evidence/desktop-bundle-final.log

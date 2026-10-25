@@ -1,0 +1,6 @@
+{
+  "beforeFix": "Completed panel immediately re-expanded after clicking collapse; observed in native UI.",
+  "afterFix": "button (collapsed) 导入完成 · 成功 1 / 1 · 失败 0 · 已取消 0",
+  "bundle": "Final rebuilt application relaunched before verification.",
+  "result": "passed"
+}

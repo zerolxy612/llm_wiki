@@ -37,6 +37,7 @@ import {
   type FileChangeTask,
 } from "@/commands/file-sync"
 import { inferWikiTypeFromPath, wikiTypeLabel } from "@/lib/wiki-page-types"
+import { getIngestQueueStatus } from "./ingest-queue-status"
 
 const FILE_TYPE_ICONS: Record<string, typeof FileText> = {
   sources: BookOpen,
@@ -95,6 +96,7 @@ export function ActivityPanel() {
   const [queueTasks, setQueueTasks] = useState<IngestTask[]>(() => [...getQueue()])
   const [selectedTaskIds, setSelectedTaskIds] = useState<Set<string>>(new Set())
   const prevRunningRef = useRef(0)
+  const prevHasWorkRef = useRef(false)
 
   const runningCount = items.filter((i) => i.status === "running").length
   const hasItems = items.length > 0
@@ -114,6 +116,7 @@ export function ActivityPanel() {
   }, [queueTasks])
 
   const queueSummary = getQueueSummary()
+  const queueStatus = getIngestQueueStatus(queueSummary)
   const hasQueue = queueSummary.total > 0
   const shouldResumeQueue = queueSummary.userPaused || queueSummary.blockedOnLlmConfig
   const hasFileSync = fileSyncTasks.length > 0 || Boolean(fileSyncError)
@@ -255,11 +258,13 @@ export function ActivityPanel() {
     if (runningCount > 0 && prevRunningRef.current === 0) {
       setExpanded(true)
     }
-    if ((hasQueue || hasFileSync) && !expanded) {
+    const hasWork = hasQueue || hasFileSync
+    if (hasWork && !prevHasWorkRef.current) {
       setExpanded(true)
     }
     prevRunningRef.current = runningCount
-  }, [runningCount, hasQueue, hasFileSync, expanded])
+    prevHasWorkRef.current = hasWork
+  }, [runningCount, hasQueue, hasFileSync])
 
   if (!hasItems && !hasQueue && !hasFileSync) return null
 
@@ -267,12 +272,12 @@ export function ActivityPanel() {
 
   // Build status text
   let statusText = ""
-  if (queueSummary.processing > 0 || queueSummary.pending > 0) {
-    const done = queueSummary.completed + queueSummary.failed + queueSummary.cancelled
-    statusText = `Queue: ${done}/${queueSummary.total}`
-    if (queueSummary.failed > 0) statusText += ` (${queueSummary.failed} failed)`
+  if (hasQueue && queueStatus.state !== "done") {
+    statusText = t(`activity.queueStates.${queueStatus.state}`) + " · " + t("activity.queueOutcomes", queueSummary)
   } else if (runningCount > 0) {
     statusText = `Processing: ${latestItem?.title ?? "..."}`
+  } else if (hasQueue) {
+    statusText = t("activity.queueStates.done") + " · " + t("activity.queueOutcomes", queueSummary)
   } else if (queueSummary.failed > 0 || queueSummary.cancelled > 0) {
     statusText = t("activity.stoppedCount", {
       failed: queueSummary.failed,
@@ -288,7 +293,8 @@ export function ActivityPanel() {
     statusText = `Done: ${latestItem?.title ?? "All tasks complete"}`
   }
 
-  const isActive = runningCount > 0 || queueSummary.processing > 0 || queueSummary.pending > 0 || fileSyncProcessing > 0 || fileSyncPending > 0
+  const otherRunning = items.some((item) => item.status === "running" && item.type !== "ingest")
+  const isActive = queueStatus.active || otherRunning || (!hasQueue && runningCount > 0) || fileSyncProcessing > 0 || fileSyncPending > 0
   const orderedQueueTasks = [
     ...queueTasks.filter((task) => task.status === "processing"),
     ...queueTasks.filter((task) => task.status === "pending"),
@@ -301,12 +307,17 @@ export function ActivityPanel() {
     <div className="border-t bg-muted/30">
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-expanded={expanded}
         className="flex w-full items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground hover:bg-accent/50"
       >
         {isActive ? (
           <Loader2 className="h-3 w-3 animate-spin shrink-0" />
-        ) : queueSummary.failed > 0 || fileSyncFailed > 0 || fileSyncError ? (
+        ) : queueSummary.blockedOnLlmConfig || queueSummary.failed > 0 || fileSyncFailed > 0 || fileSyncError ? (
           <AlertCircle className="h-3 w-3 shrink-0 text-destructive" />
+        ) : queueSummary.userPaused ? (
+          <Pause className="h-3 w-3 shrink-0" />
+        ) : queueSummary.cancelled > 0 ? (
+          <X className="h-3 w-3 shrink-0" />
         ) : (
           <CheckCircle2 className="h-3 w-3 shrink-0 text-emerald-500" />
         )}
@@ -386,19 +397,14 @@ export function ActivityPanel() {
           )}
 
           {/* Queue progress bar */}
-          {hasQueue && (queueSummary.processing > 0 || queueSummary.pending > 0) && (
+          {hasQueue && (
             <div className="px-3 py-1.5 border-b border-border/50">
-              <div className="flex items-center justify-between text-[10px] text-muted-foreground mb-1 gap-2">
+              <div className="flex flex-wrap items-center justify-between text-[10px] text-muted-foreground mb-1 gap-2">
                 <span>
-                  {queueSummary.paused && queueSummary.processing === 0
-                    ? t("activity.ingestQueuePaused")
-                    : t("activity.ingestQueue")}
+                  {t(`activity.queueStates.${queueStatus.state}`)}
                 </span>
                 <span className="flex-1 text-right">
-                  {t("activity.queueCompleteCount", {
-                    done: queueSummary.completed + queueSummary.failed + queueSummary.cancelled,
-                    total: queueSummary.total,
-                  })}
+                  {t("activity.queueOutcomes", queueSummary)}
                 </span>
                 {(queueSummary.processing > 0 || queueSummary.pending > 0 || queueSummary.paused) && (
                   <button
@@ -437,33 +443,25 @@ export function ActivityPanel() {
                   </button>
                 )}
               </div>
-              <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-primary transition-all"
-                  style={{ width: `${((queueSummary.completed + queueSummary.failed + queueSummary.cancelled) / Math.max(queueSummary.total, 1)) * 100}%` }}
-                />
+              <div
+                role="progressbar"
+                aria-label={t("activity.ingestQueue")}
+                aria-valuemin={0}
+                aria-valuemax={queueSummary.total}
+                aria-valuenow={queueSummary.completed}
+                aria-valuetext={t("activity.queueOutcomes", queueSummary)}
+                className="flex h-1.5 rounded-full bg-muted overflow-hidden"
+              >
+                <div className="h-full bg-emerald-500 transition-all" style={{ width: `${queueStatus.completedPercent}%` }} />
+                <div className="h-full bg-destructive transition-all" style={{ width: `${queueStatus.failedPercent}%` }} />
+                <div className="h-full bg-muted-foreground/50 transition-all" style={{ width: `${queueStatus.cancelledPercent}%` }} />
               </div>
-            </div>
-          )}
-
-          {hasQueue && queueSummary.processing === 0 && queueSummary.pending === 0 && queueSummary.failed + queueSummary.cancelled > 0 && (
-            <div className="px-3 py-1.5 border-b border-border/50">
-              <div className="flex items-center justify-between text-[10px] text-muted-foreground gap-2">
-                <span>{t("activity.ingestQueue")}</span>
-                <span className="flex-1 text-right">
-                  {t("activity.stoppedCount", {
-                    failed: queueSummary.failed,
-                    cancelled: queueSummary.cancelled,
-                  })}
-                </span>
-                <button
-                  onClick={handleRetryAllFailed}
-                  className="rounded px-1.5 py-0.5 text-[10px] hover:bg-accent hover:text-foreground"
-                  title={t("activity.retryFailedTitle")}
-                >
-                  {t("activity.retryFailed")}
-                </button>
-              </div>
+              {queueSummary.blockedOnLlmConfig && (
+                <p role="status" className="mt-1 text-[10px] text-destructive">{t("activity.configureModelHint")}</p>
+              )}
+              {queueSummary.userPaused && (
+                <p role="status" className="mt-1 text-[10px] text-muted-foreground">{t("activity.resumeHint")}</p>
+              )}
             </div>
           )}
 
@@ -540,12 +538,15 @@ function QueueRow({ task, selected, onSelect, onRetry, onCancel, onRemove, onMov
           {task.status === "cancelled" && <X className="h-3 w-3 text-muted-foreground" />}
         </div>
         <div className="min-w-0 flex-1">
-          <div className="font-medium truncate">{fileName}</div>
+          <div className="font-medium truncate" title={task.sourcePath}>{fileName}</div>
           {task.folderContext && (
             <div className="text-[10px] text-muted-foreground/70 truncate">{task.folderContext}</div>
           )}
-          {task.status === "failed" && task.error && (
-            <div className="text-[10px] text-destructive mt-0.5 truncate">{task.error}</div>
+          {task.error && (
+            <details className="text-[10px] text-destructive mt-0.5">
+              <summary className="cursor-pointer">{t("activity.viewTaskError")}</summary>
+              <p className="mt-1 whitespace-pre-wrap break-words">{task.error}</p>
+            </details>
           )}
         </div>
         <div className="flex items-center gap-1 shrink-0">

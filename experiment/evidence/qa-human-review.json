@@ -1,0 +1,38 @@
+{
+  "scope": "Human-style review of this fixed small synthetic set; not a general accuracy benchmark.",
+  "standard": {
+    "Q1": {
+      "status": "partial",
+      "reason": "Core layers correct; overly strong source-of-truth wording and a wikilink without a matching page."
+    },
+    "Q2": {
+      "status": "failed",
+      "reason": "Relevant evidence retrieved, five invalid/truncated Agent JSON rejections, eight-step limit without final answer."
+    },
+    "Q3": {
+      "status": "partial",
+      "reason": "Keyword/graph fallback correct; additional RRF claim conflicts with actual backend path when vectorHits=0."
+    },
+    "Q4": {
+      "status": "core_pass",
+      "reason": "Explains incompatible score scales and rank-based RRF, with supporting page."
+    },
+    "Q5": {
+      "status": "core_pass",
+      "reason": "Correctly distinguishes 3/8 successes from 6/8 stopped tasks."
+    },
+    "Q6": {
+      "status": "core_pass",
+      "reason": "Current 90 days, previous 30 days, effective date correct. Standard answer omits non-restoration caveat; faithful control includes it."
+    },
+    "Q7": {
+      "status": "core_pass",
+      "reason": "Refuses to infer production retention from experimental tenant policy."
+    },
+    "Q8": {
+      "status": "partial",
+      "reason": "Shared-source preservation explained; cancellation and non-rollback branch omitted."
+    }
+  },
+  "faithfulControlQ6": "core_pass; references exclusively raw/sources"
+}

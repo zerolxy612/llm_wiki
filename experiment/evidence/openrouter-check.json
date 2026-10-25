@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-21T23:22:27.813421+08:00",
+  "authentication": "passed HTTP 200",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "endpoint": "https://openrouter.ai/api/v1",
+  "maxContextSize": 32768,
+  "ingestReasoning": {
+    "mode": "off"
+  },
+  "nativeWindow": "verified via Computer Use",
+  "initialQueue": {
+    "failed": 8,
+    "success": 0,
+    "reason": "old authentication failures before completed configuration"
+  }
+}

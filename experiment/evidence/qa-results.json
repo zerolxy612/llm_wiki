@@ -1,0 +1,609 @@
+{
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "maxContextSize": 32768,
+  "scope": "Native desktop Agent, fixed synthetic corpus, web search off, embeddings disabled. Retrieved references do not by themselves prove that each reference was cited or supports the answer. Human review is recorded separately.",
+  "records": [
+    {
+      "questionId": "Q1",
+      "question": "Atlas 的原始文档、生成知识和检索索引分别承担什么职责？",
+      "prompt": "Atlas 的原始文档、生成知识和检索索引分别承担什么职责？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597219428_5oxcwy",
+      "answer": "Atlas 的三层数据分别承担以下职责（依据 [[concepts/三层数据模型]]，并见于 [[sources/03-storage-and-provenance]]、[[sources/04-hybrid-retrieval]]）：\n\n1. **原始文档（raw/sources，[[entities/raw-sources]]）**  \n   作为唯一的权威事实来源，保存未经加工的第一手材料，是所有知识和索引的溯源根。其职责是与派生层的控制信息分层，保证任何 wiki 内容都能回溯到原始出处；来源删除时的级联处理也以此层为起点（见 [[concepts/来源追溯]]、[[concepts/控制信息与数据分层]]、[[concepts/来源删除的级联处理]]）。\n\n2. **生成知识（wiki，[[entities/wiki]]）**  \n   由两阶段知识编译从原始文档提炼、结构化的持久化成果，以 [[wikilink]] 组织成图结构（见 [[concepts/两阶段知识编译]]、[[concepts/wiki图结构]]）。它负责把一次性、易失的生成过程固化为可复用、可维护、可追溯的长期知识资产——这正是 [[queries/为什么知识需要持久化]] 要回答的问题。\n\n3. **检索索引（[[entities/查询索引]]）**  \n   为查询而生的派生数据，支撑混合检索与证据上下文的快速匹配（见 [[sources/04-hybrid-retrieval]]）。它面向在线查询性能优化，是 wiki 之上的可重建派生层；其代价体现在重建成本上（见 [[concepts/索引重建成本]]），数据流动方向是 raw → wiki → 查询索引。\n\n三者共同构成 [[concepts/三层数据模型]] 所述的「原始来源 → 生成知识 → 派生索引」的数据流动与一致性链条。",
+      "retrievedReferences": [
+        {
+          "title": "三层数据模型",
+          "path": "wiki/concepts/三层数据模型.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 三层数据模型 created: 2026-10-21 updated: 2026-10-21 tags: [数据模型, raw-sources, wiki, 索引..."
+        },
+        {
+          "title": "混合检索与证据上下文",
+          "path": "wiki/sources/04-hybrid-retrieval.md",
+          "kind": "wiki",
+          "snippet": "...溯]] 能力边界的补充说明；\"样本少时只报告观察，不推广\"与 [[concepts/错误传播]] 的谨慎原则一致。候选证据放入上下文涉及 [[concepts/三层数据模型]] 中 raw → wiki → 查询索引的数据流动。  ## 开放问题  - 图扩展的噪声控制机制与阈值设定未展开。 - 降级模式下 RRF 融合..."
+        },
+        {
+          "title": "知识编译与 RAG 结合",
+          "path": "wiki/concepts/知识编译与rag结合.md",
+          "kind": "wiki",
+          "snippet": "...dated: 2026-10-21 tags: [知识编译, RAG, 检索增强生成, 架构假设, 可追溯性] related: [atlas-技术知识助手, 三层数据模型, 01-product-scope] sources: [\"01-product-scope.md\"] ---  # 知识编译与 RAG 结合  知..."
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...s-技术知识助手]] — Atlas 技术知识助手 - [[concepts/知识编译与rag结合]] — 知识编译与 RAG 结合 - [[concepts/三层数据模型]] — 三层数据模型 - [[queries/为什么知识需要持久化]] — 为什么知识需要持久化 - [[queries/生成任务失败或取消时界面应...",
+          "graphRelations": [
+            "Atlas 技术知识助手",
+            "三层数据模型",
+            "两阶段知识编译",
+            "混合检索与证据上下文",
+            "知识编译与 RAG 结合"
+          ]
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...s-技术知识助手]] — Atlas 技术知识助手 - [[concepts/知识编译与rag结合]] — 知识编译与 RAG 结合 - [[concepts/三层数据模型]] — 三层数据模型 - [[queries/为什么知识需要持久化]] — 为什么知识需要持久化 - [[queries/生成任务失败或取消时界面应...",
+          "graphRelations": [
+            "Atlas 技术知识助手",
+            "三层数据模型",
+            "两阶段知识编译",
+            "混合检索与证据上下文",
+            "知识编译与 RAG 结合"
+          ]
+        }
+      ],
+      "inlineCitations": [
+        "concepts/三层数据模型",
+        "sources/03-storage-and-provenance",
+        "sources/04-hybrid-retrieval",
+        "entities/raw-sources",
+        "concepts/来源追溯",
+        "concepts/控制信息与数据分层",
+        "concepts/来源删除的级联处理",
+        "entities/wiki",
+        "wikilink",
+        "concepts/两阶段知识编译",
+        "concepts/wiki图结构",
+        "queries/为什么知识需要持久化",
+        "entities/查询索引",
+        "sources/04-hybrid-retrieval",
+        "concepts/索引重建成本",
+        "concepts/三层数据模型"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 0,
+      "expectedPoints": [
+        "证据层",
+        "知识层",
+        "加速层",
+        "控制信息与索引不同"
+      ]
+    },
+    {
+      "questionId": "Q2",
+      "question": "两阶段导入为什么可以与传统 RAG 结合？有哪些代价？",
+      "prompt": "两阶段导入为什么可以与传统 RAG 结合？有哪些代价？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597326676_w2eza2",
+      "answer": "The Agent reached the tool-iteration limit after 8 step(s). It gathered 8 tool observation(s), but did not produce a final answer. Please narrow the request or ask it to continue from the latest result.",
+      "retrievedReferences": [
+        {
+          "title": "两阶段知识编译",
+          "path": "wiki/sources/02-two-step-ingest.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: 两阶段知识编译 created: 2026-10-21 updated: 2026-10-21 tags: [知识编译, 两阶段, 架构原则, 实验资料] related: [两阶段知识编译, 错误传播, 知识编译与rag结合, 三层数据模型, 为什么知识需要持..."
+        },
+        {
+          "title": "两阶段知识编译",
+          "path": "wiki/concepts/两阶段知识编译.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 两阶段知识编译 created: 2026-10-21 updated: 2026-10-21 tags: [知识编译, 两阶段, 架构原则, 中间产物, 持久化] related: [错误传播, 知识编译与rag结合, 三层数据模型, 为什么知识需要持久化, ..."
+        },
+        {
+          "title": "知识编译与 RAG 结合",
+          "path": "wiki/concepts/知识编译与rag结合.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 知识编译与 RAG 结合 created: 2026-10-21 updated: 2026-10-21 tags: [知识编译, RAG, 检索增强生成, 架构假设, 可追溯性..."
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...如何控制 - [[queries/混合检索的通道数变化如何影响RRF融合]] — 混合检索的通道数变化如何影响RRF融合 - [[sources/03-storage-and-provenance]] — 存储分层与来源追溯 - [[entities/raw-sources]] — raw/sources - [[enti...",
+          "graphRelations": [
+            "两阶段拆分的收益与代价如何权衡",
+            "两阶段知识编译",
+            "存储分层与来源追溯",
+            "知识编译与 RAG 结合"
+          ]
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...如何控制 - [[queries/混合检索的通道数变化如何影响RRF融合]] — 混合检索的通道数变化如何影响RRF融合 - [[sources/03-storage-and-provenance]] — 存储分层与来源追溯 - [[entities/raw-sources]] — raw/sources - [[enti...",
+          "graphRelations": [
+            "两阶段拆分的收益与代价如何权衡",
+            "两阶段知识编译",
+            "存储分层与来源追溯",
+            "知识编译与 RAG 结合"
+          ]
+        }
+      ],
+      "inlineCitations": [],
+      "toolIterationLimitReached": true,
+      "toolProtocolRejections": 5,
+      "expectedPoints": [
+        "导入时编译",
+        "查询时检索",
+        "额外请求开销",
+        "分析错误传播"
+      ]
+    },
+    {
+      "questionId": "Q3",
+      "question": "没有向量模型时知识库还能查询吗？",
+      "prompt": "没有向量模型时知识库还能查询吗？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597444564_hjhi4q",
+      "answer": "可以查询。根据知识库的「检索通道降级」概念（wiki/concepts/检索通道降级.md），当向量模型不可用时会进入降级模式，此时检索仍在生效，只是改用关键词和图检索，不再依赖向量模型。相关内容见于「混合检索」来源页（wiki/sources/04-hybrid-retrieval.md）与「混合检索」概念页（wiki/concepts/混合检索.md）。\n\n需要注意：降级模式下 RRF 排名融合的输入通道数会变化（关键词+图检索，而非含向量模型的完整通道），融合逻辑需处理可变通道数，这一点在知识库中尚未展开（见「检索通道降级」末尾，以及「混合检索的通道数变化如何影响RRF融合」查询页 wiki/queries/混合检索的通道数变化如何影响RRF融合.md）。",
+      "retrievedReferences": [
+        {
+          "title": "混合检索与证据上下文",
+          "path": "wiki/sources/04-hybrid-retrieval.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: 混合检索与证据上下文 created: 2026-10-21 updated: 2026-10-21 tags: [混合检索, RRF, 证据上下文, 检索通道, ..."
+        },
+        {
+          "title": "混合检索",
+          "path": "wiki/concepts/混合检索.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 混合检索 created: 2026-10-21 updated: 2026-10-21 tags: [混合检索, 检索通道, RRF, 图扩展] related:..."
+        },
+        {
+          "title": "混合检索的通道数变化如何影响RRF融合",
+          "path": "wiki/queries/混合检索的通道数变化如何影响RRF融合.md",
+          "kind": "wiki",
+          "snippet": "--- type: query title: 混合检索的通道数变化如何影响RRF融合 created: 2026-10-21 updated: 2026-10-21 tags: [RRF, 混合检索, 降级策略..."
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...]] — 历史版本策略 - [[entities/人工复核队列]] — 人工复核队列 - [[sources/04-hybrid-retrieval]] — 混合检索与证据上下文 - [[concepts/混合检索]] — 混合检索 - [[concepts/RRF排名融合]] — RRF排名融合 - [[concept...",
+          "graphRelations": [
+            "查询索引",
+            "检索通道降级",
+            "混合检索",
+            "混合检索与证据上下文",
+            "混合检索的通道数变化如何影响RRF融合"
+          ]
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...]] — 历史版本策略 - [[entities/人工复核队列]] — 人工复核队列 - [[sources/04-hybrid-retrieval]] — 混合检索与证据上下文 - [[concepts/混合检索]] — 混合检索 - [[concepts/RRF排名融合]] — RRF排名融合 - [[concept...",
+          "graphRelations": [
+            "查询索引",
+            "检索通道降级",
+            "混合检索",
+            "混合检索与证据上下文",
+            "混合检索的通道数变化如何影响RRF融合"
+          ]
+        },
+        {
+          "title": "检索通道降级",
+          "path": "wiki/concepts/检索通道降级.md",
+          "kind": "wiki",
+          "snippet": "...检索仍在生效。  ## 与融合模式的关系  融合模式依赖向量模型，降级模式只有关键词和图检索。两种模式下 [[concepts/RRF排名融合]] 的输入通道数不同，融合逻辑需处理可变通道数，本文未展开。"
+        }
+      ],
+      "inlineCitations": [],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 1,
+      "expectedPoints": [
+        "关键词和图检索",
+        "不能声称完成向量验证"
+      ]
+    },
+    {
+      "questionId": "Q4",
+      "question": "为什么不能把两个检索通道的原始分数直接相加？",
+      "prompt": "为什么不能把两个检索通道的原始分数直接相加？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597535515_8azdto",
+      "answer": "依据知识库：不同检索通道的原始分数尺度不可比，不能直接相加。例如关键词检索与向量检索各自产生原始分值，但两者的绝对大小尺度不同，直接相加会被尺度差异主导，无法公平合并排序结果。因此采用 RRF，按各通道内的相对名次而不是原始分值汇总。\n\n参考：[[concepts/RRF排名融合]]（wiki/concepts/RRF排名融合.md），其来源为 [[sources/04-hybrid-retrieval]]（混合检索与证据上下文）。",
+      "retrievedReferences": [
+        {
+          "title": "RRF排名融合",
+          "path": "wiki/concepts/RRF排名融合.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: RRF排名融合 created: 2026-10-21 updated: 2026-10-21 tags: [RRF, 排名融合, 混合检索] related: [混..."
+        },
+        {
+          "title": "混合检索的通道数变化如何影响RRF融合",
+          "path": "wiki/queries/混合检索的通道数变化如何影响RRF融合.md",
+          "kind": "wiki",
+          "snippet": "--- type: query title: 混合检索的通道数变化如何影响RRF融合 created: 2026-10-21 updated: 2026-10-21 tags: [RRF, 混合检索, 降级策略] related: [RRF..."
+        },
+        {
+          "title": "混合检索与证据上下文",
+          "path": "wiki/sources/04-hybrid-retrieval.md",
+          "kind": "wiki",
+          "snippet": "...source title: 混合检索与证据上下文 created: 2026-10-21 updated: 2026-10-21 tags: [混合检索, RRF, 证据上下文, 检索通道, 实验设计] related: [混合检索, RRF排名融合, 检索通道降级, 证据上下文与token预算, 来源追溯, 两阶段知识..."
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...es/04-hybrid-retrieval]] — 混合检索与证据上下文 - [[concepts/混合检索]] — 混合检索 - [[concepts/RRF排名融合]] — RRF排名融合 - [[concepts/检索通道降级]] — 检索通道降级 - [[concepts/证据上下文与token预算]] — 证...",
+          "graphRelations": [
+            "RRF排名融合",
+            "检索通道降级",
+            "混合检索",
+            "混合检索与证据上下文",
+            "混合检索的通道数变化如何影响RRF融合"
+          ]
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...es/04-hybrid-retrieval]] — 混合检索与证据上下文 - [[concepts/混合检索]] — 混合检索 - [[concepts/RRF排名融合]] — RRF排名融合 - [[concepts/检索通道降级]] — 检索通道降级 - [[concepts/证据上下文与token预算]] — 证...",
+          "graphRelations": [
+            "RRF排名融合",
+            "检索通道降级",
+            "混合检索",
+            "混合检索与证据上下文",
+            "混合检索的通道数变化如何影响RRF融合"
+          ]
+        }
+      ],
+      "inlineCitations": [
+        "concepts/RRF排名融合",
+        "sources/04-hybrid-retrieval"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 0,
+      "expectedPoints": [
+        "尺度不同",
+        "RRF按排名融合"
+      ]
+    },
+    {
+      "questionId": "Q5",
+      "question": "8 个任务中 3 成功、2 失败、1 取消、2 等待，应该展示多少成功？",
+      "prompt": "8 个任务中 3 成功、2 失败、1 取消、2 等待，应该展示多少成功？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597598700_l38p5e",
+      "answer": "应展示 **3 个成功**，成功比例是 **3/8**。依据 [[concepts/任务状态机]]：8 个任务中 3 成功、2 失败、1 取消、2 等待，“成功比例是 3/8”；`pending`（等待）任务尚未结束，不应计入“已停止执行”。已停止执行的任务数是 6/8，与成功比例是两种不同语义，不要把“已停止”误读为“成功”。该结论来自 [[sources/06-queue-and-recovery]] 引用的示例。",
+      "retrievedReferences": [
+        {
+          "title": "任务状态机",
+          "path": "wiki/concepts/任务状态机.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 任务状态机 created: 2026-10-21 updated: 2026-10-21 tags: [任务状态, 进度语义, 取消, 暂停] related:..."
+        },
+        {
+          "title": "长任务的进度、取消与恢复",
+          "path": "wiki/sources/06-queue-and-recovery.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: 长任务的进度、取消与恢复 created: 2026-10-21 updated: 2026-10-21 tags: [任务状态, 取消, 恢复, 进度UI, 持久..."
+        },
+        {
+          "title": "生成任务失败或取消时界面应如何解释进度",
+          "path": "wiki/queries/生成任务失败或取消时界面应如何解释进度.md",
+          "kind": "wiki",
+          "snippet": "--- type: query title: 生成任务失败或取消时界面应如何解释进度 created: 2026-10-21 updated: 2026-10-21 tags: [开放问题, 交互设计, 任务失败..."
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...期后wiki引用如何保持可追溯]] — 原始来源过期后wiki引用如何保持可追溯 - [[sources/06-queue-and-recovery]] — 长任务的进度、取消与恢复 - [[concepts/任务状态机]] — 任务状态机 - [[concepts/任务恢复策略]] — 任务恢复策略 - [[entit...",
+          "graphRelations": [
+            "任务恢复策略",
+            "任务状态机",
+            "取消的竞态防护如何实现",
+            "生成任务失败或取消时界面应如何解释进度",
+            "长任务的进度、取消与恢复"
+          ]
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...期后wiki引用如何保持可追溯]] — 原始来源过期后wiki引用如何保持可追溯 - [[sources/06-queue-and-recovery]] — 长任务的进度、取消与恢复 - [[concepts/任务状态机]] — 任务状态机 - [[concepts/任务恢复策略]] — 任务恢复策略 - [[entit...",
+          "graphRelations": [
+            "任务恢复策略",
+            "任务状态机",
+            "取消的竞态防护如何实现",
+            "生成任务失败或取消时界面应如何解释进度",
+            "长任务的进度、取消与恢复"
+          ]
+        }
+      ],
+      "inlineCitations": [
+        "concepts/任务状态机",
+        "sources/06-queue-and-recovery"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 1,
+      "expectedPoints": [
+        "3/8",
+        "6/8是结束执行而非成功"
+      ]
+    },
+    {
+      "questionId": "Q6",
+      "question": "截至2026年10月21日，Atlas 实验租户原始文档默认保留多久？和旧规则有何区别？",
+      "prompt": "截至2026年10月21日，Atlas 实验租户原始文档默认保留多久？和旧规则有何区别？【原文对照】请依据知识库简明回答并引用来源。",
+      "retrievalMode": "faithful",
+      "conversationId": "conv_1792597739291_vz9250",
+      "answer": "截至 2026-10-21，Atlas 实验租户的原始来源文档默认保留 **90 天**（来源：raw/sources/08-retention-policy-v2.md）。该策略状态为“当前版本”，生效日期 2026-10-01，适用范围为 Atlas 实验租户；从生效日起 90 天替代 v1 的 30 天，生成 Wiki 的项目生命周期规则保持不变。\n\n与旧规则的差异：v1 默认保留 **30 天**（raw/sources/07-retention-policy-v1.md，历史版本，生效日期 2026-01-01），v2 将默认值从 30 天延长为 90 天。注意：此变更不适用于 2026-10-01 之前已按旧策略删除的文档，不能恢复已删除内容；且文中没有提供生产租户配置，不能据此推断生产环境也采用 90 天（raw/sources/08-retention-policy-v2.md）。",
+      "retrievedReferences": [
+        {
+          "title": "07-retention-policy-v1.md",
+          "path": "raw/sources/07-retention-policy-v1.md",
+          "kind": "external",
+          "source": "Source",
+          "snippet": "# Atlas 数据保留策略 v1 这是虚构的实验政策，用于测试历史版本冲突识别。 状态：历史版本。生效日期：2026-01-01。适用范围：Atlas 实验租户。 原始来源文档默认保留 30 天。生成 Wiki 在项目存在期间保留。删除原始来源需要清理相关引用，但仍有其他来源支持的共享概念不应整体删除。 本文件只描述 v1，后续版本可能修改默认值。回答“当前原始文档保留多久”时，应检查是否存在新的已生效策略，引用版本与日期，避免只匹配到“30 天”就直接回答。"
+        },
+        {
+          "title": "01-product-scope.md",
+          "path": "raw/sources/01-product-scope.md",
+          "kind": "external",
+          "source": "Source",
+          "snippet": "# Atlas 技术知识助手：实验范围 本文是为架构实验编写的虚构产品资料，不是上线记录或外部研究结论。 Atlas 面向需要比较技术方案的工程师。用户导入原始文档，系统生成可阅读、可链接、可追溯的 Markdown Wiki，再利用检索为问答提供证据。原始文档保存在 raw/sources，生成知识保存在 wiki，索引是可重建的派生数据。 实验目标是验证跨文档组织、来源引用、矛盾识别和更新行为。检索命中不等于回答正确，生成页面也不等于事实已经过人工确认。当前范围不包括生产权限隔离、多人协作和线上 SLA。 核心问题：为什么知识需要持久化？如何把知识编译和传统 RAG 结合？当生成任务失败或取消时，界面应该如何解释进度？"
+        },
+        {
+          "title": "08-retention-policy-v2.md",
+          "path": "raw/sources/08-retention-policy-v2.md",
+          "kind": "external",
+          "source": "Source",
+          "snippet": "# Atlas 数据保留策略 v2 这是虚构的实验政策，用于测试更新、覆盖范围及可追溯性。 状态：当前版本。生效日期：2026-10-01。适用范围：Atlas 实验租户。 从生效日起，原始来源文档默认保留 90 天，替代 v1 的 30 天。生成 Wiki 的项目生命周期规则保持不变。此变更不适用于 2026-10-01 之前已按旧策略删除的文档，不能恢复已删除内容。 当查询包含“目前”“最新”或明确日期时，应结合该日期选择适用版本，回答当前值并说明历史差异。没有给出生产租户配置，不能推断生产环境也采用 90 天。"
+        },
+        {
+          "title": "05-graph-and-review.md",
+          "path": "raw/sources/05-graph-and-review.md",
+          "kind": "external",
+          "source": "Source",
+          "snippet": "# 图结构与人工复核 本文是原创实验资料。 Wiki 图由页面和 wikilink 构成。共享来源也可用于判断相关性，但“相关”不等于“因果”或“结论成立”。社区发现用于观察主题簇；孤立节点可能是知识缺口，也可能只是新导入的独立资料。高连接节点可能是重要概念，也可能只是宽泛的导航页。 如果两份来源对同一设置给出不同值，系统应保留来源日期、适用范围和证据，必要时加入人工复核队列。不能只因为某页连接多就宣布它更可靠。演示时需要展示至少一个跨来源概念和一个冲突，而不只是图上有节点。 Atlas 的数据保留策略存在历史版本，请结合策略文档的生效日期回答，不要把两种值混成一个统一规则。"
+        }
+      ],
+      "inlineCitations": [],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 1,
+      "expectedPoints": [
+        "90天",
+        "2026-10-01生效",
+        "旧值30天",
+        "不恢复已删除内容"
+      ]
+    },
+    {
+      "questionId": "Q6",
+      "question": "截至2026年10月21日，Atlas 实验租户原始文档默认保留多久？和旧规则有何区别？",
+      "prompt": "截至2026年10月21日，Atlas 实验租户原始文档默认保留多久？和旧规则有何区别？请依据知识库回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792596967458_fxsefw",
+      "answer": "截至 2026 年 10 月 21 日，Atlas 实验租户中原始文档的默认保留期限为 **90 天**，依据是 [[sources/08-retention-policy-v2]]（Atlas 数据保留策略 v2）。该 v2 策略自 **2026-10-01** 起生效，规定将原始来源默认保留期限改为 90 天（参见 [[concepts/数据保留策略版本化]]）。\n\n与旧规则的区别：旧规则 v1 规定默认保留 **30 天**（参见 [[sources/07-retention-policy-v1]]）。因此变化是从 v1 的 30 天调整为 v2 的 90 天；因当前日期 2026-10-21 已过 v2 生效日 2026-10-01，所以适用的是 v2 的 90 天保留期限。\n\n简单说：**旧规则 30 天，当前适用新规则 90 天**，多了 60 天。",
+      "retrievedReferences": [
+        {
+          "title": "Atlas 数据保留策略 v2",
+          "path": "wiki/sources/08-retention-policy-v2.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: Atlas 数据保留策略 v2 created: 2026-10-21 updated: 2026-10-21 tags: [数据保留策略, 政策版本, 实验政策, 来源..."
+        },
+        {
+          "title": "Atlas 数据保留策略 v1",
+          "path": "wiki/sources/07-retention-policy-v1.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: Atlas 数据保留策略 v1 created: 2026-10-21 updated: 2026-10-21 tags: [保留策略, 历史版本, 政策, 数据分层] ..."
+        },
+        {
+          "title": "数据保留策略版本化",
+          "path": "wiki/concepts/数据保留策略版本化.md",
+          "kind": "wiki",
+          "snippet": "...tention-policy-v2.md\"] ---  # 数据保留策略版本化  数据保留策略版本化指同一保留政策存在多个版本，各版本按生效日期区分适用性。在 Atlas 实验租户中，v1 规定原始来源文档默认保留 30 天，v2 自 2026-10-01 起将其改为 90 天。  ## 版本链  - **v1**：30 天，适..."
+        },
+        {
+          "title": "来源删除的级联处理",
+          "path": "wiki/concepts/来源删除的级联处理.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...venance.md\"] ---  # 来源删除的级联处理  来源删除的级联处理是知识编译系统中的一项维护策略：删除一个来源时，共享概念如果仍有其他来源支持，应保留页面并移除已删除的来源引用。  ## 规则  当 [[raw-sources]] 中的某个来源被删除时：  1. 检查依赖该来源的页面。 2. 若页面所描述的...",
+          "graphRelations": [
+            "Atlas 数据保留策略 v1",
+            "Atlas 数据保留策略 v2",
+            "原始来源过期后wiki引用如何保持可追溯",
+            "数据保留策略",
+            "数据保留策略版本化"
+          ]
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...## Synthesis         ## Recently Updated - [[sources/08-retention-policy-v2]] — Atlas 数据保留策略 v2 - [[concepts/数据保留策略版本化]] — 数据保留策略版本化 - [[concepts/政策生效日期边界]] — 政策生效日期...",
+          "graphRelations": [
+            "Atlas 数据保留策略 v1",
+            "Atlas 数据保留策略 v2",
+            "原始来源过期后wiki引用如何保持可追溯",
+            "数据保留策略",
+            "数据保留策略版本化"
+          ]
+        }
+      ],
+      "inlineCitations": [
+        "sources/08-retention-policy-v2",
+        "concepts/数据保留策略版本化",
+        "sources/07-retention-policy-v1"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 0,
+      "expectedPoints": [
+        "90天",
+        "2026-10-01生效",
+        "旧值30天",
+        "不恢复已删除内容"
+      ]
+    },
+    {
+      "questionId": "Q7",
+      "question": "Atlas 生产租户的原始文档默认保留多久？",
+      "prompt": "Atlas 生产租户的原始文档默认保留多久？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597132571_oj728d",
+      "answer": "知识库中没有说明 Atlas 生产租户原始文档的默认保留期。\n\n依据 [[sources/08-retention-policy-v2]]（Atlas 数据保留策略 v2）：该政策的适用范围仅为 **Atlas 实验租户**，v2 自 2026-10-01 起把原始来源文档默认保留期定为 **90 天**（替代 v1 的 30 天）。但页面明确标注“没有给出生产租户配置，不能推断生产环境也采用 90 天”，并在约束表中写明“生产租户配置：未给出，不可推断”。\n\n因此当前知识库只能确认实验租户 v2 为 90 天、v1 为 30 天；生产租户的保留期没有记录，不能外推。",
+      "retrievedReferences": [
+        {
+          "title": "Atlas 数据保留策略 v2",
+          "path": "wiki/sources/08-retention-policy-v2.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: Atlas 数据保留策略 v2 created: 2026-10-21 updated: 2026-10-21 tags: [数据保留策略, 政策版本, 实验政策, 来源..."
+        },
+        {
+          "title": "Atlas 数据保留策略 v1",
+          "path": "wiki/sources/07-retention-policy-v1.md",
+          "kind": "wiki",
+          "snippet": "--- type: source title: Atlas 数据保留策略 v1 created: 2026-10-21 updated: 2026-10-21 tags: [保留策略, 历史版本, 政策, 数据分层] ..."
+        },
+        {
+          "title": "数据保留策略版本化",
+          "path": "wiki/concepts/数据保留策略版本化.md",
+          "kind": "wiki",
+          "snippet": "...tention-policy-v2.md\"] ---  # 数据保留策略版本化  数据保留策略版本化指同一保留政策存在多个版本，各版本按生效日期区分适用性。在 Atlas 实验租户中，v1 规定原始来源文档默认保留 30 天，v2 自 2026-10-01 起将其改为 90 天。  ## 版本链  - **v1**：30 天，适..."
+        },
+        {
+          "title": "来源删除的级联处理",
+          "path": "wiki/concepts/来源删除的级联处理.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...venance.md\"] ---  # 来源删除的级联处理  来源删除的级联处理是知识编译系统中的一项维护策略：删除一个来源时，共享概念如果仍有其他来源支持，应保留页面并移除已删除的来源引用。  ## 规则  当 [[raw-sources]] 中的某个来源被删除时：  1. 检查依赖该来源的页面。 2. 若页面所描述的...",
+          "graphRelations": [
+            "Atlas 数据保留策略 v1",
+            "Atlas 数据保留策略 v2",
+            "原始来源过期后wiki引用如何保持可追溯",
+            "数据保留策略",
+            "数据保留策略版本化"
+          ]
+        },
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...## Synthesis         ## Recently Updated - [[sources/08-retention-policy-v2]] — Atlas 数据保留策略 v2 - [[concepts/数据保留策略版本化]] — 数据保留策略版本化 - [[concepts/政策生效日期边界]] — 政策生效日期...",
+          "graphRelations": [
+            "Atlas 数据保留策略 v1",
+            "Atlas 数据保留策略 v2",
+            "原始来源过期后wiki引用如何保持可追溯",
+            "数据保留策略",
+            "数据保留策略版本化"
+          ]
+        },
+        {
+          "title": "实验与生产边界",
+          "path": "wiki/concepts/实验与生产边界.md",
+          "kind": "wiki",
+          "snippet": "--- type: concept title: 实验与生产边界 created: 2026-10-21 updated: 2026-10-21 tags: [实验环境, 生产环境, 推断边界, 范围限制] relat..."
+        },
+        {
+          "title": "实验日志",
+          "path": "wiki/log.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "...]]、[[concepts/政策生效日期边界]]、[[concepts/不可追溯删除]]、[[concepts/时间敏感查询解析]]、[[concepts/实验与生产边界]]。 - 关联既有页面：[[sources/07-retention-policy-v1]]、[[concepts/数据保留策略]]、[[concept...",
+          "graphRelations": [
+            "Atlas 数据保留策略 v1",
+            "Atlas 数据保留策略 v2",
+            "实验与生产边界",
+            "数据保留策略",
+            "数据保留策略版本化"
+          ]
+        }
+      ],
+      "inlineCitations": [
+        "sources/08-retention-policy-v2"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 0,
+      "expectedPoints": [
+        "没有提供生产配置",
+        "不能推断90天"
+      ]
+    },
+    {
+      "questionId": "Q8",
+      "question": "删除一个来源或取消一个任务时，为什么不能直接删除所有已生成的共享概念页？",
+      "prompt": "删除一个来源或取消一个任务时，为什么不能直接删除所有已生成的共享概念页？请依据知识库简明回答并引用来源。",
+      "retrievalMode": "standard",
+      "conversationId": "conv_1792597646116_nj3kn2",
+      "answer": "不能直接删除共享概念页，原因是这些页面可能仍被其他来源支持。依据 [[concepts/来源删除的级联处理]]（见 wiki/concepts/来源删除的级联处理.md，其来源为 sources/03-storage-and-provenance.md）：删除一个来源时，若共享概念仍有其他来源支持，应保留页面，只从页面的 sources 字段移除被删来源的引用。这一策略用于遏制错误传播——只有当一个概念的所有支持来源都被删除时才可能考虑删除页面，但该边界场景在当前知识库中仍是开放问题。",
+      "retrievedReferences": [
+        {
+          "title": "Wiki Index",
+          "path": "wiki/index.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "matched entity; 47 related link(s)"
+        },
+        {
+          "title": "AI 应用架构实验",
+          "path": "wiki/overview.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "matched entity; 47 related link(s)"
+        },
+        {
+          "title": "实验日志",
+          "path": "wiki/log.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "matched entity; 26 related link(s)"
+        },
+        {
+          "title": "来源删除的级联处理",
+          "path": "wiki/concepts/来源删除的级联处理.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "matched entity; 16 related link(s)"
+        },
+        {
+          "title": "来源追溯",
+          "path": "wiki/concepts/来源追溯.md",
+          "kind": "wiki",
+          "source": "Graph",
+          "snippet": "matched entity; 16 related link(s)"
+        }
+      ],
+      "inlineCitations": [
+        "concepts/来源删除的级联处理"
+      ],
+      "toolIterationLimitReached": false,
+      "toolProtocolRejections": 1,
+      "expectedPoints": [
+        "其他来源仍支持",
+        "共享页面可能是合并更新",
+        "取消不等于回滚"
+      ]
+    }
+  ]
+}

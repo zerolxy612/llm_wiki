@@ -1055,6 +1055,18 @@
     "pdfTooLarge": "此 PDF 文件过大，无法在应用内预览。请使用系统应用打开。"
   },
   "activity": {
+    "queueStates": {
+      "blocked": "等待配置模型",
+      "paused": "队列已暂停",
+      "processing": "正在导入",
+      "queued": "等待导入",
+      "stopped": "导入需要处理",
+      "done": "导入完成"
+    },
+    "queueOutcomes": "成功 {{completed}} / {{total}} · 失败 {{failed}} · 已取消 {{cancelled}}",
+    "configureModelHint": "请在设置中配置导入模型，然后点击“继续”。",
+    "resumeHint": "当前不会启动新任务，点击“继续”可恢复。待处理任务的详情可能包含服务商限流原因。",
+    "viewTaskError": "查看错误或停止原因",
     "processing": "处理中：{{title}}",
     "done": "已完成：{{title}}",
     "clearCompleted": "清除已完成",
@@ -1062,7 +1074,7 @@
     "ingestQueuePaused": "摄取队列（已暂停）",
     "pauseQueue": "暂停",
     "resumeQueue": "继续",
-    "pauseQueueTitle": "当前任务完成后暂停，不再启动新的摄取任务。",
+    "pauseQueueTitle": "暂停队列，并请求停止正在导入的任务；继续后会重新处理未完成任务。",
     "resumeQueueTitle": "继续处理排队中的摄取任务",
     "queueCompleteCount": "{{done}}/{{total}} 已完成",
     "failedCount": "{{count}} 个失败",

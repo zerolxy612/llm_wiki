@@ -1055,6 +1055,18 @@
     "pdfTooLarge": "This PDF is too large for the in-app preview. Open it with the system app."
   },
   "activity": {
+    "queueStates": {
+      "blocked": "Waiting for model setup",
+      "paused": "Queue paused",
+      "processing": "Ingesting",
+      "queued": "Waiting to ingest",
+      "stopped": "Ingest needs attention",
+      "done": "Ingest complete"
+    },
+    "queueOutcomes": "Succeeded {{completed}} / {{total}} · Failed {{failed}} · Cancelled {{cancelled}}",
+    "configureModelHint": "Configure an ingest model in Settings, then click Resume.",
+    "resumeHint": "No new tasks will start. Click Resume to continue. Pending task details may explain a provider limit.",
+    "viewTaskError": "View task error / stop reason",
     "processing": "Processing: {{title}}",
     "done": "Done: {{title}}",
     "clearCompleted": "Clear completed",
@@ -1062,7 +1074,7 @@
     "ingestQueuePaused": "Ingest Queue (paused)",
     "pauseQueue": "Pause",
     "resumeQueue": "Resume",
-    "pauseQueueTitle": "Pause after the current task finishes. No new ingest tasks will start.",
+    "pauseQueueTitle": "Pause the queue and request cancellation of active ingest tasks. Resume will reprocess unfinished tasks.",
     "resumeQueueTitle": "Resume processing queued ingest tasks",
     "queueCompleteCount": "{{done}}/{{total}} complete",
     "failedCount": "{{count}} failed",

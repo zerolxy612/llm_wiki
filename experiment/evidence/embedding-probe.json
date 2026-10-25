@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-21",
+  "endpoint": "http://127.0.0.1:11434/v1/embeddings",
+  "model": "bge-m3",
+  "dimensions": 1024,
+  "status": "passed",
+  "scope": "Provider probe only. Does not verify LanceDB indexing or application retrieval."
+}

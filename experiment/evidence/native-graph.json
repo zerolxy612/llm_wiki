@@ -1,0 +1,17 @@
+{
+  "totalNodes": 41,
+  "totalEdges": 135,
+  "visibleNodes": 38,
+  "visibleEdges": 128,
+  "hiddenStructuralNodes": 3,
+  "renderedInNativeApp": true,
+  "nodeTypes": {
+    "entity": 7,
+    "concept": 23,
+    "source": 8,
+    "overview": 1,
+    "other": 2
+  },
+  "queryPagesExcludedByGraph": 9,
+  "note": "Full graph computed by actual production module; native default filters hide structural pages."
+}

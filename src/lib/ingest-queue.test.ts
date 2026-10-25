@@ -129,6 +129,20 @@ beforeEach(async () => {
 })
 
 describe("ingest-queue — enqueue & basic processing", () => {
+  it("notifies subscribers when an idle queue is paused and resumed", () => {
+    const pausedStates: boolean[] = []
+    const unsubscribe = subscribeIngestQueue(() => {
+      pausedStates.push(getQueueSummary().userPaused)
+    })
+    try {
+      pauseProcessing()
+      resumeProcessing()
+      expect(pausedStates).toEqual([false, true, false])
+    } finally {
+      unsubscribe()
+    }
+  })
+
   it("pushes queue snapshots only while a subscriber is active", async () => {
     const run = createDeferred<string[]>()
     mockAutoIngest.mockReturnValue(run.promise)

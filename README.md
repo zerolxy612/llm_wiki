@@ -1,5 +1,7 @@
 # LLM Wiki
 
+> **Interview experiment:** This branch extends [nashsu/llm_wiki](https://github.com/nashsu/llm_wiki) v0.6.13 with clearer ingest progress and pause/resume feedback. Start with the [experiment guide](experiment/README.md), [validation record](experiment/D1-验收记录.md), and [engineering changes](experiment/D3-工程改进.md). These documents distinguish upstream capabilities, local changes, and observed limitations.
+
 <p align="center">
   <img src="logo.jpg" width="128" height="128" style="border-radius: 22%;" alt="LLM Wiki Logo">
 </p>

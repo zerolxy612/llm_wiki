@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-21",
+  "upstream_commit": "e08cfce65aad8b76b13546a081c1a8d4422b70c3",
+  "branch": "experiment/ingest-progress",
+  "corpus_documents": 8,
+  "evaluation_questions": 8,
+  "new_tests": 11,
+  "offline_tests": {
+    "files": 140,
+    "passed": 2073
+  },
+  "mcp_tests": {
+    "passed": 25
+  },
+  "frontend_build": "passed",
+  "native_rust_build": "passed with existing linker unwind warning",
+  "native_app_launch": "passed: final bundle relaunched and persistent knowledge/chat data verified",
+  "real_llm_ingest_graph_query": "completed basic end-to-end; known answer/protocol limitations recorded",
+  "embedding_provider_probe": {
+    "model": "bge-m3",
+    "dimensions": 1024,
+    "status": "passed; indexing/retrieval not yet verified"
+  },
+  "native_app_bundle": "passed",
+  "native_app_path": "/Users/longxiangyu/LLM-wiki/src-tauri/target/debug/bundle/macos/LLM Wiki.app",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "lastVerifiedLocalDate": "2026-10-22",
+  "ingestedSources": 8,
+  "wikiMarkdownPages": 50,
+  "graph": {
+    "fullNodes": 41,
+    "fullEdges": 135,
+    "visibleNodes": 38,
+    "visibleEdges": 128
+  },
+  "qa": {
+    "fixedQuestions": 8,
+    "standardCorePass": 4,
+    "standardPartial": 3,
+    "standardFailed": 1,
+    "faithfulControls": 1,
+    "notAGeneralAccuracyBenchmark": true
+  },
+  "nativePendingCancelRetry": "passed",
+  "nativeUnchangedCacheRepeat": "passed; Wiki contents and cache entry unchanged",
+  "nativePanelCollapse": "passed after final rebuild",
+  "remainingUnverified": [
+    "vector index/retrieval end-to-end",
+    "semantic update after modified sources/control files",
+    "running-request cancellation latency",
+    "production benefit and costs"
+  ]
+}

@@ -1,0 +1,47 @@
+
+> llm-wiki@0.6.13 mcp:test
+> npm --prefix mcp-server test
+
+
+> llm-wiki-mcp-server@0.4.26 test
+> npm run build && node --test dist/test/*.test.js
+
+
+> llm-wiki-mcp-server@0.4.26 build
+> tsc -p tsconfig.json
+
+✔ normalizeBaseUrl trims trailing slashes and falls back to localhost (0.761ms)
+✔ projects sends bearer token and parses current project (23.484833ms)
+✔ health does not send authorization (0.212209ms)
+✔ search posts JSON body to current project (0.881583ms)
+✔ embedPage posts a project-relative wiki path (0.3965ms)
+✔ embedPage rejects malformed success payloads (0.334167ms)
+✔ writePage posts exact content and requires verified persistence (0.166292ms)
+✔ writePage rejects an unverified success response (0.137417ms)
+✔ chat posts agent request and parses references (0.323916ms)
+✔ cancelChat posts to the chat cancellation endpoint (0.234542ms)
+✔ graph parses nodeType from API graph nodes (0.352917ms)
+✔ graph forwards pagination and exposes page metadata (0.23425ms)
+✔ files exposes truncated flag (0.156333ms)
+✔ reviews requests unresolved review items with filters (0.183333ms)
+✔ network failures include desktop app hint (0.128ms)
+✔ non-JSON responses include status and body preview (0.090459ms)
+✔ API errors include status and server message (0.08075ms)
+✔ pin resolves current to a stable project id (0.631959ms)
+✔ pinned sessions reject cross-project overrides (0.1815ms)
+✔ unbound sessions preserve the current-project compatibility default (0.048667ms)
+✔ responses carry a structural active-project reminder (0.087084ms)
+[llm-wiki-mcp] package.json version not found; using fallback 0.0.0
+[llm-wiki-mcp] package.json version not found; using fallback 0.0.0
+✔ MCP server version is read from package.json (0.592625ms)
+✔ MCP server version supports source-layout execution (0.087791ms)
+✔ MCP server version falls back when package.json cannot be found (0.745ms)
+✔ MCP server version falls back for invalid meta URLs (0.087167ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97.181875

@@ -1,0 +1,23 @@
+{
+  "scope": "Native ActivityPanel, observed through accessibility tree; pending-task cancellation only, no running request aborted.",
+  "before": {
+    "success": 4,
+    "total": 8,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "afterCancel": {
+    "success": 4,
+    "total": 8,
+    "failed": 0,
+    "cancelled": 1
+  },
+  "afterRetry": {
+    "success": 4,
+    "total": 8,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "task": "08-retention-policy-v2.md",
+  "result": "passed: cancelled count changes independently; retry returns task to pending; success count stays 4"
+}

@@ -1,0 +1,10 @@
+[
+  {"id":"Q1","question":"Atlas 的原始文档、生成知识和检索索引分别承担什么职责？","sources":["01-product-scope.md","03-storage-and-provenance.md"],"expected":["证据层","知识层","加速层","控制信息与索引不同"]},
+  {"id":"Q2","question":"两阶段导入为什么可以与传统 RAG 结合？有哪些代价？","sources":["02-two-step-ingest.md","04-hybrid-retrieval.md"],"expected":["导入时编译","查询时检索","额外请求开销","分析错误传播"]},
+  {"id":"Q3","question":"没有向量模型时知识库还能查询吗？","sources":["04-hybrid-retrieval.md"],"expected":["关键词和图检索","不能声称完成向量验证"]},
+  {"id":"Q4","question":"为什么不能把两个检索通道的原始分数直接相加？","sources":["04-hybrid-retrieval.md"],"expected":["尺度不同","RRF按排名融合"]},
+  {"id":"Q5","question":"8 个任务中 3 成功、2 失败、1 取消、2 等待，应该展示多少成功？","sources":["06-queue-and-recovery.md"],"expected":["3/8","6/8是结束执行而非成功"]},
+  {"id":"Q6","question":"截至2026年10月21日，Atlas 实验租户原始文档默认保留多久？和旧规则有何区别？","sources":["07-retention-policy-v1.md","08-retention-policy-v2.md"],"expected":["90天","2026-10-01生效","旧值30天","不恢复已删除内容"]},
+  {"id":"Q7","question":"Atlas 生产租户的原始文档默认保留多久？","sources":["08-retention-policy-v2.md"],"expected":["没有提供生产配置","不能推断90天"]},
+  {"id":"Q8","question":"删除一个来源或取消一个任务时，为什么不能直接删除所有已生成的共享概念页？","sources":["03-storage-and-provenance.md","06-queue-and-recovery.md"],"expected":["其他来源仍支持","共享页面可能是合并更新","取消不等于回滚"]}
+]
